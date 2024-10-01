@@ -7,7 +7,7 @@ export default {
 <template>
     <div>
         <header>
-            <nav>
+            <nav class="container">
                 <ul>
                     <li><router-link :to="{ name:'home'}">Home</router-link></li>
                     <li><router-link :to="{ name:'projects'}">i miei progetti</router-link></li>
@@ -19,5 +19,14 @@ export default {
 </template>
 
 <style lang="scss">
-    
+    ul{
+        list-style-type: none;
+        display: flex;
+        gap: 3rem;
+        padding-left: 0;
+    }
+
+    li{
+        display:flex;
+    }
 </style>
