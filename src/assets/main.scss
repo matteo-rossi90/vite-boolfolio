@@ -1,4 +1,23 @@
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+ul{
+    list-style-type: none;
+}
+
 .container{
     width: 90%;
     margin: 0 auto;
+}
+
+.title{
+    margin: 10px 0;
+}
+
+span{
+    padding: 15px 0;
 }

@@ -18,9 +18,13 @@ export default {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+    header,
+    nav{
+        height: 60px;
+    }
+    
     ul{
-        list-style-type: none;
         display: flex;
         gap: 3rem;
         padding-left: 0;
@@ -28,5 +32,7 @@ export default {
 
     li{
         display:flex;
+        line-height: 50px;
+        align-items: center;
     }
 </style>
