@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: 'Roboto', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 ul{
@@ -16,8 +16,21 @@ ul{
 
 .title{
     margin: 10px 0;
+    text-align: center;
 }
 
-span{
-    padding: 15px 0;
+.badge-tech,
+.badge-type {
+    width: 30%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.badge-tech {
+    background-color: rgb(99, 195, 254);
+}
+
+.badge-type {
+    background-color: rgb(254, 169, 99);
 }
