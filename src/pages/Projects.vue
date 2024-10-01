@@ -207,6 +207,12 @@ export default {
 @media (max-width: 480px) {
     .container-cards .box-cards .cards {
         width: 100%;
+        font-size: 12px;
+    }
+
+    .paginator .btn-paginator{
+        font-size: 10px;
+        padding: 10px
     }
 }
 
