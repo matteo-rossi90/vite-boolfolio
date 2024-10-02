@@ -76,7 +76,12 @@ export default {
                 <div class="box-cards" v-else>
                     <div v-for="project in projects" :key="project.id" class="cards">
                         <h4>
-                            {{ project.title }}
+                           <a href="#">
+                                
+                                <router-link :to="{name: 'projectDetail', params:{'slug': project.slug}}">
+                                    {{ project.title }}
+                                </router-link>
+                           </a> 
                         </h4>
 
                         <img :src="getImageUrl(project.img)" :alt="project.title">
