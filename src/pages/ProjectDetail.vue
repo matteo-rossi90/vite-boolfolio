@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { store } from '../store/store';
 
+import { getType, getTechnology, formatDate } from '@/components/data/functions';
+
 export default {
     name: 'ProjectDetail',
     data(){
@@ -33,7 +35,7 @@ export default {
         getImageUrl(imagePath) {
         const baseUrl = 'http://127.0.0.1:8000'; 
         return baseUrl + imagePath;
-}
+    }
     },
     mounted(){
         console.log(this.$route.params.slug);
@@ -42,12 +44,31 @@ export default {
     },
     computed:{
         infoProject(){
+            const type = getType(this.project.type);
+            const tech = getTechnology(this.project.technologies);
+
             return `
                 <ul>
-                    <li><strong>Argomento:</strong> ${this.project.theme}</li>
-                    <li><strong>Azienda:</strong> ${this.project.company}</li>
-                    <li><strong>Inizio:</strong> ${this.project.start_date}</li>
-                    <li><strong>Fine:</strong> ${this.project.end_date}</li>
+                    <li>
+                        <strong>
+                            Argomento:
+                        </strong>
+                        <span> 
+                            ${this.project.theme}
+                        </span>
+                    </li>
+                    <li>
+                        <strong>
+                            Azienda:
+                        </strong>
+                        <span>
+                        ${this.project.company}
+                        </span>
+                    </li>
+                    <li><strong>Inizio:</strong> ${formatDate(this.project.start_date)}</li>
+                    <li><strong>Fine:</strong> ${formatDate(this.project.end_date)}</li>
+                    <li><strong>Tipo di progetto:  </strong><span> ${type} </span></li>
+                    <li><strong>Tecnologie:  </strong> <span> ${tech} </span></li>
                 </ul>`
         }
     }
@@ -81,6 +102,7 @@ export default {
 
     .box-project{
         display:flex;
+        width: 85%;
         margin: 0 auto;
         padding: 40px 0;
     }
