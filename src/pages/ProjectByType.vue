@@ -2,25 +2,33 @@
 import axios from 'axios';
 import { store } from '../store/store';
 
+import Loader from '../components/partials/Loader.vue';
+
 export default {
+    components:{
+        Loader
+    },
     name: 'ProjectByType',
     data(){
         return{
             projects:[],
-            typeName:''
+            typeName:'',
+            isLoading: true
         }
     },
     methods:{
         getApi(slug){
             axios.get(store.apiUrl + 'project-by-type/' + slug)
             .then(res =>{
+                this.isLoading = false;
                 console.log(res)
                 if(res.data.success){
                     console.log(res.data.type.name)
                     this.projects = res.data.type.projects;
                     this.typeName = res.data.type.name;
                 }else{
-                    console.log('error 404')
+                    console.log('error 404');
+                    this.$router.push({name: '404'});
                 }
             })
         },
@@ -44,8 +52,10 @@ export default {
             <h1 class="title">{{ typeName }}</h1>
 
         <div class="container-cards">
-
-            <div class="box-cards">
+            <div class="loading" v-if="isLoading">
+                <Loader />
+            </div>
+            <div class="box-cards" v-else>
                 <div v-for="project in projects" :key="project.id" class="cards">
                     <h4>
                         

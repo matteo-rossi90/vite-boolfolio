@@ -2,18 +2,25 @@
 import axios from 'axios';
 import { store } from '../store/store';
 
+import Loader from '@/components/partials/Loader.vue';
+
 export default {
+    components:{
+        Loader
+    },
     name: 'ProjectByTechnologies',
     data(){
         return{
             projects:[],
-            techsName:''
+            techsName:'',
+            isLoading: true
         }
     },
     methods:{
         getApi(slug){
             axios.get(store.apiUrl + 'project-by-technologies/' + slug)
             .then(res =>{
+                this.isLoading = false;
                 console.log(res)
                 if(res.data.success){
                     console.log(res.data.technologies.name)
@@ -21,6 +28,7 @@ export default {
                     this.techsName = res.data.technologies.name;
                 }else{
                     console.log('error 404')
+                    this.$router.push({name: '404'});
                 }
             })
         },
@@ -44,8 +52,10 @@ export default {
             <h1 class="title">{{ techsName }}</h1>
 
         <div class="container-cards">
-
-            <div class="box-cards">
+            <div class="loading" v-if="isLoading">
+                <Loader />
+            </div>
+            <div class="box-cards" v-else>
                 <div v-for="project in projects" :key="project.id" class="cards">
                     <h4>
                         
