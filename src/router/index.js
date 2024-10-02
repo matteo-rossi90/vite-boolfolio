@@ -3,6 +3,7 @@ import Home from '../pages/Home.vue';
 import Projects from '../pages/Projects.vue';
 import Contacts from '../pages/Contacts.vue';
 import ProjectDetail from '../pages/ProjectDetail.vue';
+import ProjectByType from '@/pages/ProjectByType.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/dettaglio-progetto/:slug',
       name: 'projectDetail',
       component: ProjectDetail
+    },
+    {
+      path: '/progetto-per-tipo/:slug',
+      name: 'projectByType',
+      component: ProjectByType
     }
   ]
 })

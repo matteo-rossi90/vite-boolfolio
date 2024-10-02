@@ -5,6 +5,10 @@
     font-family: 'Roboto', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
+body {
+    background-color: rgb(238, 239, 255);
+}
+
 ul{
     list-style-type: none;
 }
@@ -53,4 +57,68 @@ button{
     border-radius: 10px;
     border:none;
     cursor: pointer;
+}
+
+.container-cards {
+    width: 85%;
+    margin: 0 auto;
+
+    .box-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: start;
+        align-items: stretch;
+        margin: 30px 0;
+
+        .cards {
+            padding: 20px;
+            width: calc(100% / 3 - 10px);
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            img {
+                margin: 15px 0;
+                object-fit: cover;
+                width: 100%;
+                aspect-ratio: 12 / 9;
+                border-radius: 10px;
+            }
+
+            ul,
+            li {
+                margin: 20px 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+            .list-techs {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+
+            }
+        }
+    }
+}
+
+//responsive
+@media (max-width: 768px) {
+    .container-cards .box-cards .cards {
+        width: calc(100% / 2 - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .container-cards .box-cards .cards {
+        width: 100%;
+        font-size: 12px;
+    }
 }

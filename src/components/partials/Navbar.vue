@@ -19,6 +19,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+    header{
+        background-color: white;
+    }
     header,
     nav{
         height: 60px;
@@ -32,7 +35,7 @@ export default {
 
     li{
         display:flex;
-        line-height: 50px;
+        line-height: 35px;
         align-items: center;
     }
 </style>

@@ -102,6 +102,7 @@ export default {
 
     .box-project{
         display:flex;
+        gap: 10px;
         width: 85%;
         margin: 0 auto;
         padding: 40px 0;
@@ -109,7 +110,11 @@ export default {
 
     .col-image,
     .col-text{
-        padding: 10px;
+        padding: 20px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .col-image{
@@ -117,6 +122,7 @@ export default {
 
         img{
             object-fit: contain;
+            object-position: center;
             width: 90%;
         }
     }

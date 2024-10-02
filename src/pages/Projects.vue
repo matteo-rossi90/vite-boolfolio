@@ -55,12 +55,12 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <h1 class="title">
-            Progetti
-        </h1>
 
-        <section>
+    <section>
+        <div class="container">
+            <h1 class="title">
+                Progetti
+            </h1>
             <div class="container-cards">
                 <div class="paginator">
                     <button class="btn-paginator" 
@@ -76,20 +76,14 @@ export default {
                 <div class="box-cards" v-else>
                     <div v-for="project in projects" :key="project.id" class="cards">
                         <h4>
-                           <a href="#">
-                                
-                                <router-link :to="{name: 'projectDetail', params:{'slug': project.slug}}">
-                                    {{ project.title }}
-                                </router-link>
-                           </a> 
+                            <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}">
+                                {{ project.title }}
+                            </router-link>
                         </h4>
 
                         <img :src="getImageUrl(project.img)" :alt="project.title">
 
                         <ul class="list-projects">
-                            <!-- <li> -->
-                                <!-- <p>{{ project.description }}</p> -->
-                            <!-- </li> -->
                             <li>
                                 <span class="badge-type">{{ project.type.name }}</span>
                             </li>
@@ -118,21 +112,28 @@ export default {
                     :disabled="link.active || !link.url"></button>
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section>
+    <section>
+        <div class="container">
 
-        <section>
+
             <h2 class="title">Progetti per categoria</h2>
 
             <div class="project-by-type">
                 <div class="badge-type-projects" v-for="type in types" :key="type.id">
-                    {{ type.name }}
+                    <router-link :to="{name:'projectByType', params:{slug: type.slug}}">
+                        {{ type.name }}
+                    </router-link>
                 </div>
             </div>
+        </div>
+    </section>
 
-        </section>
+    <section>
+        <div class="container">
 
-        <section>
             <h2 class="title">Progetti per tecnologia</h2>
 
             <div class="project-by-tech">
@@ -141,10 +142,9 @@ export default {
                 </div>
 
             </div>
+        </div>
+    </section>
 
-        </section>
-
-    </div>
 
 </template>
 
@@ -196,72 +196,10 @@ section{
     }
 }
 
-.container-cards {
-    width: 85%;
-    margin: 0 auto;
-
-    .box-cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        justify-content: start;
-        align-items: stretch;
-        margin: 30px 0;
-
-        .cards {
-            padding: 20px;
-            width: calc(100% / 3 - 10px);
-            border-radius: 10px;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-            &:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            }
-
-            img {
-                margin: 15px 0;
-                object-fit: cover;
-                width: 100%;
-                aspect-ratio: 12 / 9;
-                border-radius: 10px;
-            }
-
-            ul, li {
-                margin: 20px 0;
-                padding: 0;
-                list-style-type: none;
-            }
-
-            .list-techs {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-
-            }
-        }
-    }
-}
-
-//responsive
-@media (max-width: 768px) {
-    .container-cards .box-cards .cards {
-        width: calc(100% / 2 - 10px);
-    }
-}
-
-@media (max-width: 480px) {
-    .container-cards .box-cards .cards {
-        width: 100%;
-        font-size: 12px;
-    }
-
     .paginator .btn-paginator{
         font-size: 10px;
         padding: 10px
     }
-}
+
 
 </style>

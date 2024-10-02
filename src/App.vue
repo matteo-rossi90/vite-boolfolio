@@ -11,10 +11,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <main>
     <Navbar />
     <router-view></router-view>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
