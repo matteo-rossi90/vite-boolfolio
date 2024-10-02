@@ -4,6 +4,7 @@ import Projects from '../pages/Projects.vue';
 import Contacts from '../pages/Contacts.vue';
 import ProjectDetail from '../pages/ProjectDetail.vue';
 import ProjectByType from '@/pages/ProjectByType.vue';
+import ProjectByTechnologies from '@/pages/ProjectByTechnologies.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/progetto-per-tipo/:slug',
       name: 'projectByType',
       component: ProjectByType
+    },
+    {
+      path: '/progetto-per-tecnologia/:slug',
+      name: 'projectByTechnologies',
+      component: ProjectByTechnologies
     }
   ]
 })

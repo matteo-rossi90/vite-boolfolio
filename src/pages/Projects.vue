@@ -33,7 +33,7 @@ export default {
                     this.projects = response.data.data;
                     console.log(this.paginatorData)
                 }else{
-                    console.log(type);
+                    console.log(type, response.data);
                     this[type] = response.data;
                 }
             })
@@ -138,7 +138,9 @@ export default {
 
             <div class="project-by-tech">
                 <div class="badge-techs-projects" v-for="tech in technologies" :key="tech.id">
-                    {{ tech.name }}
+                    <router-link :to="{name:'projectByTechnologies', params:{slug: tech.slug}}">
+                        {{ tech.name }}
+                    </router-link>
                 </div>
 
             </div>
