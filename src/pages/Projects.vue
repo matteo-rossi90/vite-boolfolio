@@ -3,11 +3,12 @@ import axios from 'axios';
 import { store } from '../store/store';
 
 import Loader from '../components/partials/Loader.vue';
-
+import Paginator from '@/components/partials/Paginator.vue';
 
 export default {
     components:{
-        Loader
+        Loader,
+        Paginator
     },
     name: 'Projects',
     data(){
@@ -62,13 +63,8 @@ export default {
                 Progetti
             </h1>
             <div class="container-cards">
-                <div class="paginator">
-                    <button class="btn-paginator" 
-                    v-for="(link, index) in paginatorData.links" :key="index" 
-                    v-html="link.label"
-                    @click="getApi(link.url)"
-                    :disabled="link.active || !link.url"></button>
-                </div>
+
+                <Paginator :data="paginatorData" @callApi="getApi"/>
             
                 <div class="loading" v-if="isLoading">
                     <Loader />
@@ -104,13 +100,8 @@ export default {
                     
                 </div>
 
-                <div class="paginator">
-                    <button class="btn-paginator" 
-                    v-for="(link, index) in paginatorData.links" :key="index" 
-                    v-html="link.label"
-                    @click="getApi(link.url)"
-                    :disabled="link.active || !link.url"></button>
-                </div>
+                <Paginator :data="paginatorData" @callApi="getApi"/>
+
             </div>
         </div>
     </section>
@@ -197,11 +188,6 @@ section{
         }
     }
 }
-
-    .paginator .btn-paginator{
-        font-size: 10px;
-        padding: 10px
-    }
 
 
 </style>
