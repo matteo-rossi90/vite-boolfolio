@@ -164,30 +164,6 @@ section{
     height: 200px;
 }
 
-.paginator {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin: 40px 0;
-
-    .btn-paginator {
-        background-color: #e2e2e2;
-        padding: 8px 12px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: #ccc;
-        }
-
-        &:disabled {
-            background-color: #ddd;
-            cursor: not-allowed;
-        }
-    }
-}
 
 
 </style>

@@ -49,41 +49,47 @@ export default {
 
     <section>
         <div class="container">
-            <h1 class="title">{{ typeName }}</h1>
+            <div v-if="projects.length > 0">
+                <h1 class="title">{{ typeName }}</h1>
 
-        <div class="container-cards">
-            <div class="loading" v-if="isLoading">
-                <Loader />
-            </div>
-            <div class="box-cards" v-else>
-                <div v-for="project in projects" :key="project.id" class="cards">
-                    <h4>
-                        
-                        <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}">
-                            {{ project.title }}
-                        </router-link> 
-                    </h4>
+                <div class="container-cards">
+                    <div class="loading" v-if="isLoading">
+                        <Loader />
+                    </div>
+                    <div class="box-cards" v-else>
+                        <div v-for="project in projects" :key="project.id" class="cards">
+                            <h4>
+                                
+                                <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}">
+                                    {{ project.title }}
+                                </router-link> 
+                            </h4>
 
-                    <img :src="getImageUrl(project.img)" :alt="project.title">
+                            <img :src="getImageUrl(project.img)" :alt="project.title">
 
-                    <ul class="list-projects">
-                        <li v-if="project.technologies && project.technologies.length > 0">
-                            <ul class="list-techs">
-                                <li v-for="tech in project.technologies" :key="tech.id">
-                                    <small class="badge-tech">
-                                        {{ tech.name }}
-                                    </small>
+                            <ul class="list-projects">
+                                <li v-if="project.technologies && project.technologies.length > 0">
+                                    <ul class="list-techs">
+                                        <li v-for="tech in project.technologies" :key="tech.id">
+                                            <small class="badge-tech">
+                                                {{ tech.name }}
+                                            </small>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                        <li v-else>
-                            <small>Nessuna tecnologia</small>
-                        </li>
-                    </ul> 
-                </div>
-            </div>
+                                <li v-else>
+                                    <small>Nessuna tecnologia</small>
+                                </li>
+                            </ul> 
+                        </div>
+                    </div>
 
-        </div>
+                </div>
+
+            </div>
+            <div v-else>
+                <p>Non è stato trovato nessun progetto</p>
+            </div>
         
     </div>
 
