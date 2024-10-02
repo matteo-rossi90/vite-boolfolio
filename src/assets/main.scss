@@ -20,7 +20,9 @@ ul{
 }
 
 .badge-tech,
-.badge-type {
+.badge-type,
+.badge-type-projects,
+.badge-techs-projects {
     width: 30%;
     padding: 8px 10px;
     border-radius: 10px;
@@ -33,6 +35,16 @@ ul{
 
 .badge-type {
     background-color: rgb(254, 169, 99);
+}
+
+.badge-type-projects{
+    background-color: rgb(254, 169, 99);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.badge-techs-projects {
+    background-color: rgb(99, 195, 254);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button{

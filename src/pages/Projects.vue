@@ -48,7 +48,7 @@ export default {
     },
     mounted(){
         this.getApi(store.apiUrl + 'projects', 'projects');
-        this.getApi(store.apiUrl + 'type', 'type');
+        this.getApi(store.apiUrl + 'type', 'types');
         this.getApi(store.apiUrl + 'technologies', 'technologies');
     }
 }
@@ -60,61 +60,104 @@ export default {
             Progetti
         </h1>
 
-        <div class="container-cards">
-            <div class="paginator">
-                <button class="btn-paginator" 
-                v-for="(link, index) in paginatorData.links" :key="index" 
-                v-html="link.label"
-                @click="getApi(link.url)"
-                :disabled="link.active || !link.url"></button>
-            </div>
-        
-            <div class="loading" v-if="isLoading">
-                <Loader />
-            </div>
-            <div class="box-cards" v-else>
-                <div v-for="project in projects" :key="project.id" class="cards">
-                    <h4>
-                        {{ project.title }}
-                    </h4>
-
-                    <img :src="getImageUrl(project.img)" :alt="project.title">
-
-                    <ul class="list-projects">
-                        <!-- <li> -->
-                            <!-- <p>{{ project.description }}</p> -->
-                        <!-- </li> -->
-                        <li>
-                            <span class="badge-type">{{ project.type.name }}</span>
-                        </li>
-                        <li v-if="project.technologies && project.technologies.length > 0">
-                            <ul class="list-techs">
-                                <li v-for="tech in project.technologies" :key="tech.id">
-                                    <small class="badge-tech">
-                                        {{ tech.name }}
-                                    </small>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul> 
+        <section>
+            <div class="container-cards">
+                <div class="paginator">
+                    <button class="btn-paginator" 
+                    v-for="(link, index) in paginatorData.links" :key="index" 
+                    v-html="link.label"
+                    @click="getApi(link.url)"
+                    :disabled="link.active || !link.url"></button>
                 </div>
-                
+            
+                <div class="loading" v-if="isLoading">
+                    <Loader />
+                </div>
+                <div class="box-cards" v-else>
+                    <div v-for="project in projects" :key="project.id" class="cards">
+                        <h4>
+                            {{ project.title }}
+                        </h4>
+
+                        <img :src="getImageUrl(project.img)" :alt="project.title">
+
+                        <ul class="list-projects">
+                            <!-- <li> -->
+                                <!-- <p>{{ project.description }}</p> -->
+                            <!-- </li> -->
+                            <li>
+                                <span class="badge-type">{{ project.type.name }}</span>
+                            </li>
+                            <li v-if="project.technologies && project.technologies.length > 0">
+                                <ul class="list-techs">
+                                    <li v-for="tech in project.technologies" :key="tech.id">
+                                        <small class="badge-tech">
+                                            {{ tech.name }}
+                                        </small>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li v-else>
+                                <small>Nessuna tecnologia</small>
+                            </li>
+                        </ul> 
+                    </div>
+                    
+                </div>
+
+                <div class="paginator">
+                    <button class="btn-paginator" 
+                    v-for="(link, index) in paginatorData.links" :key="index" 
+                    v-html="link.label"
+                    @click="getApi(link.url)"
+                    :disabled="link.active || !link.url"></button>
+                </div>
             </div>
 
-            <div class="paginator">
-                <button class="btn-paginator" 
-                v-for="(link, index) in paginatorData.links" :key="index" 
-                v-html="link.label"
-                @click="getApi(link.url)"
-                :disabled="link.active || !link.url"></button>
-            </div>
-        </div>
+        </section>
 
-</div>
+        <section>
+            <h2 class="title">Progetti per categoria</h2>
+
+            <div class="project-by-type">
+                <div class="badge-type-projects" v-for="type in types" :key="type.id">
+                    {{ type.name }}
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 class="title">Progetti per tecnologia</h2>
+
+            <div class="project-by-tech">
+                <div class="badge-techs-projects" v-for="tech in technologies" :key="tech.id">
+                    {{ tech.name }}
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
 
 </template>
 
 <style lang="scss">
+
+.project-by-type,
+.project-by-tech{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+    padding: 20px 0
+}
+
+section{
+    padding: 40px 0;
+}
 
 .loading {
     display: flex;
@@ -164,7 +207,7 @@ export default {
             padding: 20px;
             width: calc(100% / 3 - 10px);
             border-radius: 10px;
-            background-color: rgb(226, 226, 226);
+            background-color: rgb(255, 255, 255);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
 
