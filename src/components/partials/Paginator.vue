@@ -30,6 +30,14 @@ export default {
     justify-content: center;
     margin: 40px 0;
 
+    button{
+    padding: 8px 16px;
+    background-color: transparent;
+    border-radius: 10px;
+    border:none;
+    cursor: pointer;
+    }
+
     .btn-paginator {
         background-color: #ffffff;
         padding: 8px 12px;
