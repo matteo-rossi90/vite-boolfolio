@@ -121,9 +121,8 @@ export default {
     </section>
 </template>
 
-<style lang="scss" scoped>
-
-    ul li,
+<style lang="scss" >
+    div > ul li,
     div > h3, p{
         padding: 10px 0;
     }
