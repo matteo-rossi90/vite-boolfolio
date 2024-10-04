@@ -49,7 +49,10 @@ export default {
 
     <section>
         <div class="container">
-            <div v-if="projects.length > 0">
+             <div class="loading" v-if="isLoading">
+                <Loader />
+            </div>
+            <div v-else-if="projects.length > 0">
                 <h1 class="title">{{ typeName }}</h1>
 
                 <div class="container-cards">
@@ -88,7 +91,7 @@ export default {
 
             </div>
             <div v-else>
-                <p>Non è stato trovato nessun progetto</p>
+                <h1 class="text">Non è stato trovato nessun progetto</h1>
             </div>
         
     </div>

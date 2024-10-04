@@ -9,6 +9,10 @@ body {
     background-color: rgb(238, 239, 255);
 }
 
+section {
+    padding: 40px 0;
+}
+
 ul{
     list-style-type: none;
 }
@@ -107,6 +111,13 @@ button{
             }
         }
     }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
 }
 
 //responsive

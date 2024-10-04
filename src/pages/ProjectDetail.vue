@@ -65,10 +65,35 @@ export default {
                         ${this.project.company}
                         </span>
                     </li>
-                    <li><strong>Inizio:</strong> ${formatDate(this.project.start_date)}</li>
-                    <li><strong>Fine:</strong> ${formatDate(this.project.end_date)}</li>
-                    <li><strong>Tipo di progetto:  </strong><span> ${type} </span></li>
-                    <li><strong>Tecnologie:  </strong> <span> ${tech} </span></li>
+                    <li>
+                        <strong>
+                            Inizio:
+                        </strong> 
+                        ${formatDate(this.project.start_date)}
+                        
+                    </li>
+                    <li>
+                        <strong>
+                            Fine:
+                        </strong> 
+                        ${formatDate(this.project.end_date)}
+                    </li>
+                    <li>
+                        <strong>
+                            Tipo di progetto:  
+                            </strong>
+                            <span> 
+                                ${type} 
+                            </span>
+                        </li>
+                    <li>
+                        <strong>
+                            Tecnologie:  
+                        </strong> 
+                        <span> 
+                            ${tech} 
+                        </span>
+                    </li>
                 </ul>`
         }
     }
@@ -76,24 +101,27 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <h1 class="title">{{ project.title }}</h1>
-        <div class="box-project">
-            <div class="col-image">
-                <img :src="getImageUrl(project.img)" :alt="project.title">
-            </div>
-            <div class="col-text">
-                <h3>Descrizione</h3>
-                <p>{{ project.description }}</p>
-                <div v-html="infoProject"></div>
-            </div>
+    <section>
+        <div class="container">
+            <h1 class="title">{{ project.title }}</h1>
+            <div class="box-project">
+                <div class="col-image">
+                    <img :src="getImageUrl(project.img)" :alt="project.title">
+                </div>
+                <div class="col-text">
+                    <h3>Descrizione</h3>
+                    <p>{{ project.description }}</p>
+                    <div v-html="infoProject"></div>
+                </div>
 
+            </div>
+            
         </div>
-        
-    </div>
+
+    </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     ul li,
     div > h3, p{
@@ -119,6 +147,8 @@ export default {
 
     .col-image{
         width: 50%;
+        display:flex;
+        justify-content:center;
 
         img{
             object-fit: contain;

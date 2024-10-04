@@ -49,38 +49,38 @@ export default {
 
     <section>
         <div class="container">
-        <div v-if="(projects.length > 0)">
-            <h1 class="title">{{ techsName }}</h1>
+            <div class="loading" v-if="isLoading">
+                <Loader />
+            </div>
+            <div v-else-if="(projects.length > 0)">                  
+                    <h1 class="title">{{ techsName }}</h1>
 
-            <div class="container-cards">
-                <div class="loading" v-if="isLoading">
-                    <Loader />
-                </div>
-                <div class="box-cards" v-else>
-                    <div v-for="project in projects" :key="project.id" class="cards">
-                        <h4>
-                            
-                            <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}">
-                                {{ project.title }}
-                            </router-link> 
-                        </h4>
+                    <div class="container-cards">
+                        <div class="box-cards">
+                            <div v-for="project in projects" :key="project.id" class="cards">
+                                <h4>
+                                    
+                                    <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}">
+                                        {{ project.title }}
+                                    </router-link> 
+                                </h4>
 
-                        <img :src="getImageUrl(project.img)" :alt="project.title">
+                                <img :src="getImageUrl(project.img)" :alt="project.title">
 
-                        <ul class="list-projects">
-                            <li>
-                                <span class="badge-type">{{ project.type.name }}</span>
-                            </li>
-                        </ul> 
+                                <ul class="list-projects">
+                                    <li>
+                                        <span class="badge-type">{{ project.type.name }}</span>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
             </div>
-
-        </div>
-        <div v-else>
-            <p>Non è stato trovato nessun progetto</p>
-        </div>
+            <div v-else>
+                <h1 class="text">Non è stato trovato nessun progetto</h1>
+            </div>
         
     </div>
 
@@ -88,9 +88,5 @@ export default {
 </template>
 
 <style lang="scss">
-
-section{
-    padding: 40px 0;
-}
 
 </style>

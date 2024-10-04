@@ -141,7 +141,7 @@ export default {
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .project-by-type,
 .project-by-tech{
@@ -151,17 +151,6 @@ export default {
     justify-content: center;
     align-content: center;
     padding: 20px 0
-}
-
-section{
-    padding: 40px 0;
-}
-
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
 }
 
 

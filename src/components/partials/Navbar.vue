@@ -31,6 +31,7 @@ export default {
         display: flex;
         gap: 3rem;
         padding-left: 0;
+        height: 100%
     }
 
     li{
